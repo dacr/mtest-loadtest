@@ -36,7 +36,7 @@ class AdvancedPrimesLoad extends Simulation with DummyDefaults {
           .pause(500 milliseconds, 1000 milliseconds)
         }
 
-  setUp(scn.inject(rampUsers(vus) over(60 seconds)))
+  setUp(scn.inject(rampUsers(vus) over(20 seconds)))
     .protocols(httpConf)
     .assertions(customAssertions)
 }
