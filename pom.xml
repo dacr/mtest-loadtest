@@ -38,7 +38,7 @@
     				</executions>
             <configuration>
                 <jvmArgs>
-                    <jvmArg>-DTEST_URL=http://backend:8080/</jvmArg>
+                    <jvmArg>-DTEST_URL=http://backend:8080/mtest-web-project/</jvmArg>
                     <jvmArg>-DTEST_VUS=10</jvmArg>
                     <jvmArg>-DTEST_DURATION=1</jvmArg>
                 </jvmArgs>
