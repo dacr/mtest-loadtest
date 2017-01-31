@@ -8,7 +8,7 @@ import scala.language.postfixOps
 
 class AdvancedPrimesLoad extends Simulation with DummyDefaults {
   
-  val testURL = propOrEnvOrDefault("TEST_URL", "http://localhost:8080/")
+  val testURL = propOrEnvOrDefault("TEST_URL", "http://backend:8080/mtest-web-project/")
   val vus = propOrEnvOrDefault("TEST_VUS", "20").toInt
   val duration = propOrEnvOrDefault("TEST_DURATION", "5").toInt
   val customAssertions:List[Assertion] = List(
