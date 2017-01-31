@@ -8,7 +8,9 @@
 		</encoder>
 	</appender>
 
-	<root level="INFO">
+        <logger name="lab" level="INFO"/>
+
+	<root level="WARN">
 		<appender-ref ref="CONSOLE" />
 	</root>
 
