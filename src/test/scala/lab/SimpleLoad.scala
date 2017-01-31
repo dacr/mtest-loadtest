@@ -6,11 +6,17 @@ import io.gatling.jdbc.Predef._
 import scala.concurrent.duration._
 import scala.language.postfixOps
 
-class AdvancedPrimesLoad extends Simulation with DummyDefaults {
+class SimpleLoad extends Simulation with DummyDefaults {
+  val logger = org.slf4j.LoggerFactory.getLogger(getClass())
   
   val testURL = propOrEnvOrDefault("TEST_URL", "http://backend:8080/mtest-web-project/")
   val vus = propOrEnvOrDefault("TEST_VUS", "20").toInt
   val duration = propOrEnvOrDefault("TEST_DURATION", "5").toInt
+
+  logger.info(s"TEST_URL : $testURL")
+  logger.info(s"TEST_VUS : $vus")
+  logger.info(s"TEST_DURATION : $duration minutes")
+
   val customAssertions:List[Assertion] = List(
       propOrEnv("TEST_ASSERT_MAX_RESPTIME").map(x => global.responseTime.mean.lessThan(x.toInt)),
       propOrEnv("TEST_ASSERT_MAX_RESPTIME50").map(x => global.responseTime.percentile1.lessThan(x.toInt)),
@@ -23,8 +29,6 @@ class AdvancedPrimesLoad extends Simulation with DummyDefaults {
     
   
   val httpConf = buildDefaultConfig(testURL)
-
-  def rand(i: Int) : String = java.util.concurrent.ThreadLocalRandom.current.nextInt(i).toString
 
   val scn =
         scenario("Simple load").during(duration minutes) {
